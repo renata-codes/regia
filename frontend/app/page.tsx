@@ -1,6 +1,14 @@
 "use client";
 
+import { useState } from "react";
+
 export default function Home() {
+  const [resposta, setResposta] = useState("");
+
+  function consultar() {
+    setResposta("RegIA recebeu sua pergunta com sucesso! 🌺");
+  }
+
   return (
     <main
       className="min-h-screen bg-cover bg-center bg-no-repeat"
@@ -25,10 +33,18 @@ export default function Home() {
             />
 
             <button
+              onClick={consultar}
               className="mt-5 px-8 py-4 rounded-2xl bg-pink-600 hover:bg-pink-500 text-white"
             >
               Consultar
             </button>
+
+            {resposta && (
+              <div className="mt-6 p-4 rounded-xl bg-slate-800 text-white">
+                <h2 className="font-bold mb-2">Resposta</h2>
+                <p>{resposta}</p>
+              </div>
+            )}
           </div>
         </div>
       </div>
